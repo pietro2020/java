@@ -94,4 +94,38 @@ public class Funcionario {
             }
         }
     }
+
+    public void verProdutos(List<Produto> listaDeProdutos){
+        for(Produto p : listaDeProdutos){
+            System.out.printf("| Produto: %s | Custo: %.2f | Valor: %.2f | Quantidade: %d |\n", p.nome, p.precoCus, p.precoLuc, p.quanti);
+        }
+    }
+
+    public void listarClientes(List<Cliente> listaDeClientes){
+        for(Cliente c : listaDeClientes){
+            System.out.printf("| Cliente: %s | Email: %s | CPF: %s | Data de Nascimento: %s |\n", c.nome, c.email, c.cpf, c.dataNasc);
+        }
+    }
+
+    public void procurarCliente(Scanner scanner, List<Cliente> listaDeClientes){
+        boolean clienteAchado = false;
+
+        System.out.print("Digite o nome do cliente procurado: ");
+        String clienteProcurado = scanner.nextLine();
+
+        for(Cliente c : listaDeClientes){
+            if(c.nome.equalsIgnoreCase(clienteProcurado)){
+                clienteAchado = true;
+
+                System.out.printf("| Cliente: %s | Email: %s | CPF: %s | Data de Nascimento: %s |\n", c.nome, c.email, c.cpf, c.dataNasc);
+            }
+        }
+        if(!clienteAchado){
+            System.out.println("Nenhum cliente encontrando com esse nome, tente novamente!");
+        }
+    }
+
+    public void relatorioVendas(){
+        
+    }
 }

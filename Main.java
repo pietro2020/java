@@ -83,6 +83,26 @@ public class Main {
                                     funcionario.modificaProduto(scanner,listaDeProdutos);
 
                                     break;
+                                case "3":
+                                    funcionario.verProdutos(listaDeProdutos);
+
+                                    break;
+                                case "4":
+                                    funcionario.listarClientes(listaDeClientes);
+
+                                    break;
+                                case "5":
+                                    funcionario.procurarCliente(scanner, listaDeClientes);
+
+                                    break;
+                                case "6":
+
+
+                                    break;
+                                case "7":
+
+
+                                    break;
                             }
                         }
                     } else {
