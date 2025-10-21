@@ -10,7 +10,7 @@ O objetivo principal é permitir o cadastro, listagem, atualização e exclusão
 
 ## ✨ Funcionalidades
 
-- **Produtos:** código, nome, preço, quantidade em estoque.
+- **Produtos:** nome, preço, quantidade em estoque.
 - **Funcionários:** nome, CPF.
 - **Clientes:** nome, CPF, telefone, endereço.
 
