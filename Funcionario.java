@@ -97,7 +97,7 @@ public class Funcionario {
 
     public void verProdutos(List<Produto> listaDeProdutos){
         for(Produto p : listaDeProdutos){
-            System.out.printf("| Produto: %s | Custo: %.2f | Valor: %.2f | Quantidade: %d |\n", p.nome, p.precoCus, p.precoLuc, p.quanti);
+            System.out.printf("| Produto: %s | Custo: %.2f | Valor: %.2f | Quantidade: %d |\n", p.getNome(), p.getPrecoCusto(), p.getPrecoVenda(), p.getQuantidade());
         }
     }
 
@@ -126,6 +126,6 @@ public class Funcionario {
     }
 
     public void relatorioVendas(){
-        
+        //fazer após as funcionalidades prontas
     }
 }

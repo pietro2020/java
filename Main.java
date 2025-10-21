@@ -46,9 +46,32 @@ public class Main {
                             String senha = scanner.nextLine();
 
                             if (cliente.senha.equalsIgnoreCase(senha)) {
+
+                                //todas as funções q os clientes podem fazer
+                                clientesFuncoes:
                                 while (true) {
                                     cliente.opcoes();
                                     String opcao = scanner.nextLine();
+
+                                    switch (opcao){
+                                        case "1":
+                                            cliente.verProdutos(listaDeProdutos, scanner);
+
+                                            break;
+                                        case "2":
+                                            cliente.procurarProduto(listaDeProdutos, scanner);
+
+                                            break;
+                                        case "3":
+                                            cliente.mudarDados(scanner, listaDeClientes);
+
+                                            break;
+                                        case "4":
+
+                                            break clientesFuncoes;
+                                        default:
+                                            System.out.println("Digite um número válido!");
+                                    }
                                 }
                             } else {
                                 System.out.println("Senha errada, tente novamente!");
@@ -70,6 +93,9 @@ public class Main {
                     int senha = Integer.parseInt(scanner.nextLine());
 
                     if (funcionario.senha == (senha)) {
+
+                        //todas as funções que os funcionários fazem
+                        funcionarioFuncoes:
                         while (true) {
                             funcionario.opcoes();
                             String opcao = scanner.nextLine();
@@ -100,9 +126,11 @@ public class Main {
 
                                     break;
                                 case "7":
+                                    break funcionarioFuncoes;
 
+                                default:
+                                    System.out.println("Digite um número válido!");
 
-                                    break;
                             }
                         }
                     } else {

@@ -28,11 +28,11 @@ public class Produto {
     public void setNome(String nome) { this.nome = nome; }
 
     public float getPrecoCusto() { return precoCus; }
-    public void setPrecoCusto(float precoCusto) { this.precoCus = precoCus; }
+    public void setPrecoCusto(float precoCusto) { this.precoCus = precoCusto; }
 
     public float getPrecoVenda() { return precoLuc; }
-    public void setPrecoVenda(float precoVenda) { this.precoLuc = precoLuc; }
+    public void setPrecoVenda(float precoVenda) { this.precoLuc = precoVenda; }
 
     public int getQuantidade() { return quanti; }
-    public void setQuantidade(int quantidade) { this.quanti = quanti; }
+    public void setQuantidade(int quantidade) { this.quanti = quantidade; }
 }
