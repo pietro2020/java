@@ -1,8 +1,10 @@
+package classes;
+
 public class Produto {
-    String nome;
-    float precoCus;
-    float precoLuc;
-    int quanti;
+    private String nome;
+    private float precoCus;
+    private float precoLuc;
+    private int quanti;
 
     public Produto(String nome, float precoCus, float precoLuc, int quanti){
         this.nome = nome;
@@ -35,4 +37,11 @@ public class Produto {
 
     public int getQuantidade() { return quanti; }
     public void setQuantidade(int quantidade) { this.quanti = quantidade; }
+
+    //validações
+    public boolean validaNome(String nomeDigitado){
+        return this.nome.equalsIgnoreCase(nomeDigitado);
+    }
+
+
 }

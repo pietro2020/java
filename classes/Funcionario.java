@@ -1,15 +1,26 @@
+package classes;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class Funcionario {
-    int id;
-    int senha;
-    String nome;
+    private int id;
+    private int senha;
+    private String nome;
 
     public Funcionario(int id, int senha, String nome){
         this.id = id;
         this.senha = senha;
         this.nome = nome;
+    }
+
+    //verificações
+    public boolean verificaId(int idDigitado){
+        return this.id == (id);
+    }
+
+    public boolean verificaSenha(int senhaDigitada){
+        return this.senha == (senha);
     }
 
     public void opcoes(){
@@ -54,7 +65,7 @@ public class Funcionario {
         String nomeModificar = scanner.nextLine();
 
         for(Produto p : listaDeProdutos){
-            if (p.nome.equalsIgnoreCase(nomeModificar)){
+            if (p.validaNome(nomeModificar)){
                 System.out.println("--- O QUE VOCÊ DESEJA MODIFICAR ---");
                 System.out.println("1. Nome do produto");
                 System.out.println("2. Custo do produto");
@@ -97,13 +108,13 @@ public class Funcionario {
 
     public void verProdutos(List<Produto> listaDeProdutos){
         for(Produto p : listaDeProdutos){
-            System.out.printf("| Produto: %s | Custo: %.2f | Valor: %.2f | Quantidade: %d |\n", p.getNome(), p.getPrecoCusto(), p.getPrecoVenda(), p.getQuantidade());
+            System.out.printf("| classes.Produto: %s | Custo: %.2f | Valor: %.2f | Quantidade: %d |\n", p.getNome(), p.getPrecoCusto(), p.getPrecoVenda(), p.getQuantidade());
         }
     }
 
     public void listarClientes(List<Cliente> listaDeClientes){
         for(Cliente c : listaDeClientes){
-            System.out.printf("| Cliente: %s | Email: %s | CPF: %s | Data de Nascimento: %s |\n", c.nome, c.email, c.cpf, c.dataNasc);
+            System.out.printf("| classes.Cliente: %s | Email: %s | CPF: %s | Data de Nascimento: %s |\n", c.getNome(), c.getEmail(), c.getCpf(), c.getDataNasc());
         }
     }
 
@@ -114,10 +125,10 @@ public class Funcionario {
         String clienteProcurado = scanner.nextLine();
 
         for(Cliente c : listaDeClientes){
-            if(c.nome.equalsIgnoreCase(clienteProcurado)){
+            if(c.verificarNome(clienteProcurado)){
                 clienteAchado = true;
 
-                System.out.printf("| Cliente: %s | Email: %s | CPF: %s | Data de Nascimento: %s |\n", c.nome, c.email, c.cpf, c.dataNasc);
+                System.out.printf("| classes.Cliente: %s | Email: %s | CPF: %s | Data de Nascimento: %s |\n", c.getNome(), c.getEmail(), c.getCpf(), c.getDataNasc());
             }
         }
         if(!clienteAchado){

@@ -1,86 +1,67 @@
+import classes.*;
+import controllers.*;
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
-        List<Cliente> listaDeClientes = new ArrayList<>();
-        List<Produto> listaDeProdutos = new ArrayList<>();
         Funcionario funcionario = new Funcionario(1234, 1234, "Trabaio");
+
+        ClienteController clienteController = new ClienteController();
+        App app = new App();
 
         boolean encontrado = false;
 
         while (true) {
 
-            //Começo do software
-            System.out.println("--- DIGITE O TIPO DE USUÁRIO ---");
-            System.out.println("1. Cliente");
-            System.out.println("2. Funcionário");
-            System.out.print("Qual seu tipo de usuário: ");
-            String usuario = scanner.nextLine();
+            String usuario = app.iniciar(scanner);
 
             if (usuario.equals("1")) {
 
-                System.out.print("Já possui conta?(S/N): ");
-                String possuiCont = scanner.nextLine();
+                String possuiConta = app.possuiConta(scanner);
 
-                if (possuiCont.equalsIgnoreCase("n")) {
+                if (possuiConta.equalsIgnoreCase("n")) {
 
                     //Cadastra e mostra o cliente
-                    Cliente.cadastrarCliente(scanner, listaDeClientes);
+                    App.cadastrarCliente(scanner, clienteController);
 
                     /* Mostra a lista de clientes (teste)
                     System.out.println(listaDeClientes);*/
 
-                } else if (possuiCont.equalsIgnoreCase("s")) {
-                    System.out.print("Email: ");
-                    String email = scanner.nextLine();
+                } else if (possuiConta.equalsIgnoreCase("s")) {
 
+                    Cliente clienteLogado = app.verificarLogin(scanner, clienteController);
+                    if (clienteLogado != null) {
 
-                    for(Cliente cliente : listaDeClientes) {
+                        //todas as funções q os clientes podem fazer
+                        clientesFuncoes:
+                        while (true) {
+                            String opcao = app.opcoesCliente(clienteLogado, scanner);
 
-                        if (cliente.email.equalsIgnoreCase(email)) {
-                            encontrado = true;
+                            switch (opcao) {
+                                case "1":
+                                    app.verProdutosClientes(scanner);
 
-                            System.out.print("Senha: ");
-                            String senha = scanner.nextLine();
+                                    break;
+                                case "2":
+                                    app.procurarProduto(scanner);
 
-                            if (cliente.senha.equalsIgnoreCase(senha)) {
-
-                                //todas as funções q os clientes podem fazer
-                                clientesFuncoes:
-                                while (true) {
-                                    cliente.opcoes();
-                                    String opcao = scanner.nextLine();
-
-                                    switch (opcao){
-                                        case "1":
-                                            cliente.verProdutos(listaDeProdutos, scanner);
-
-                                            break;
-                                        case "2":
-                                            cliente.procurarProduto(listaDeProdutos, scanner);
-
-                                            break;
-                                        case "3":
-                                            cliente.mudarDados(scanner, listaDeClientes);
-
-                                            break;
-                                        case "4":
-
-                                            break clientesFuncoes;
-                                        default:
-                                            System.out.println("Digite um número válido!");
+                                    break;
+                                case "3":
+                                    Cliente cliente = app.mudarDados(scanner);
+                                    if (cliente == null) {
+                                        break clientesFuncoes;
                                     }
-                                }
-                            } else {
-                                System.out.println("Senha errada, tente novamente!");
-                                break;
+
+                                    break;
+                                case "4":
+
+                                    break clientesFuncoes;
+                                default:
+                                    System.out.println("Digite um número válido!");
                             }
                         }
-                    }
-                    if(!encontrado){
-                        System.out.println("Email não encontrado, faça o cadastro!");
                     }
                 }
 
@@ -88,11 +69,11 @@ public class Main {
                 System.out.print("Id: ");
                 int id = Integer.parseInt(scanner.nextLine());
 
-                if (funcionario.id == (id)) {
+                if (funcionario.verificaId(id)) {
                     System.out.print("Senha: ");
                     int senha = Integer.parseInt(scanner.nextLine());
 
-                    if (funcionario.senha == (senha)) {
+                    if (funcionario.verificaSenha(senha)) {
 
                         //todas as funções que os funcionários fazem
                         funcionarioFuncoes:
