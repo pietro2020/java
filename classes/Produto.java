@@ -13,14 +13,6 @@ public class Produto {
         this.quanti = quanti;
     }
 
-    public void exibirProduto(){
-        System.out.println("---- PRODUTO ----");
-        System.out.println("Nome do produto: " + nome);
-        System.out.println("Valor gasto: " + precoCus);
-        System.out.println("Valor a cobrar: " + precoLuc);
-        System.out.println("Quantidade: " + quanti);
-
-    }
 
     /*Getters e setters:
     Getter: retorna um valor

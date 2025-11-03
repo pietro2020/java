@@ -6,14 +6,17 @@ public class Main {
 
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(Locale.US);
         Funcionario funcionario = new Funcionario(1234, 1234, "Trabaio");
 
         ClienteController clienteController = new ClienteController();
-        App app = new App();
+        ProdutoController produtoController = new ProdutoController();
+        App app = new App(clienteController, produtoController);
 
-        boolean encontrado = false;
+
 
         while (true) {
+
 
             String usuario = app.iniciar(scanner);
 
@@ -45,11 +48,11 @@ public class Main {
 
                                     break;
                                 case "2":
-                                    app.procurarProduto(scanner);
+                                    app.procurarProduto(scanner, funcionario);
 
                                     break;
                                 case "3":
-                                    Cliente cliente = app.mudarDados(scanner);
+                                    Cliente cliente = app.mudarDados(scanner, clienteLogado);
                                     if (cliente == null) {
                                         break clientesFuncoes;
                                     }
@@ -78,28 +81,28 @@ public class Main {
                         //todas as funções que os funcionários fazem
                         funcionarioFuncoes:
                         while (true) {
-                            funcionario.opcoes();
+                            app.opcoesFuncionario();
                             String opcao = scanner.nextLine();
 
                             switch (opcao){
                                 case "1":
-                                    funcionario.adicionarProduto(scanner, listaDeProdutos);
+                                    app.adicionarProduto(scanner);
 
                                     break;
                                 case "2":
-                                    funcionario.modificaProduto(scanner,listaDeProdutos);
+                                    app.modificaProduto(scanner);
 
                                     break;
                                 case "3":
-                                    funcionario.verProdutos(listaDeProdutos);
+                                    app.verProdutos();
 
                                     break;
                                 case "4":
-                                    funcionario.listarClientes(listaDeClientes);
+                                    app.verClientes();
 
                                     break;
                                 case "5":
-                                    funcionario.procurarCliente(scanner, listaDeClientes);
+                                    app.procurarCliente(scanner);
 
                                     break;
                                 case "6":

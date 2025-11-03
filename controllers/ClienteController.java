@@ -41,4 +41,29 @@ public class ClienteController {
     public void mudarSenha(Cliente cliente, int senhaNova){
         cliente.setSenha(senhaNova);
     }
+
+    public void listarClientes() {
+        int quantiClientes = 1;
+
+        for (Cliente cliente : listaDeClientes) {
+
+            System.out.printf("%d | Cliente: %s | Email: %s | CPF: %d | Data de Nascimento: %s |\n", quantiClientes, cliente.getNome(), cliente.getEmail(), cliente.getCpf(), cliente.getDataNasc());
+            quantiClientes++;
+        }
+    }
+
+    public Cliente clienteAchado(String nomeCliente){
+        for(Cliente c : listaDeClientes){
+            if(c.verificarNome(nomeCliente)){
+
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public void mostrarCliente(Cliente cliente){
+        System.out.printf(" Cliente: %s | Email: %s | CPF: %d | Data de Nascimento: %s |\n", cliente.getNome(), cliente.getEmail(), cliente.getCpf(), cliente.getDataNasc());
+
+    }
 }

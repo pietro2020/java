@@ -35,9 +35,6 @@ public class Cliente {
     //data de nascimento
     public String getDataNasc(){return this.dataNasc;}
 
-    public boolean verificarEmail(String emailDigitado){
-        return this.email.equalsIgnoreCase(emailDigitado);
-    }
 
     public boolean verificarSenha(int senhaDigitada){
         return this.senha == (senhaDigitada);
