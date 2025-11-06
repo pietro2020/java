@@ -5,6 +5,7 @@ import classes.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SequencedCollection;
 
 public class ClienteController {
     private List<Cliente> listaDeClientes;
@@ -42,14 +43,8 @@ public class ClienteController {
         cliente.setSenha(senhaNova);
     }
 
-    public void listarClientes() {
-        int quantiClientes = 1;
-
-        for (Cliente cliente : listaDeClientes) {
-
-            System.out.printf("%d | Cliente: %s | Email: %s | CPF: %d | Data de Nascimento: %s |\n", quantiClientes, cliente.getNome(), cliente.getEmail(), cliente.getCpf(), cliente.getDataNasc());
-            quantiClientes++;
-        }
+    public List<Cliente> listarClientes() {
+        return listaDeClientes;
     }
 
     public Cliente clienteAchado(String nomeCliente){
@@ -60,10 +55,5 @@ public class ClienteController {
             }
         }
         return null;
-    }
-
-    public void mostrarCliente(Cliente cliente){
-        System.out.printf(" Cliente: %s | Email: %s | CPF: %d | Data de Nascimento: %s |\n", cliente.getNome(), cliente.getEmail(), cliente.getCpf(), cliente.getDataNasc());
-
     }
 }

@@ -303,7 +303,10 @@ public class App {
     }
 
     public void verClientes(){
-        clienteController.listarClientes();
+        int contador = 1;
+        for (Cliente c : clienteController.listarClientes()) {
+            System.out.printf("%d | Cliente: %s | Email: %s | CPF: %d | Data de Nascimento: %s |\n", contador++, c.getNome(), c.getEmail(), c.getCpf(), c.getDataNasc());
+        }
     }
 
     public void procurarCliente(Scanner scanner){
@@ -315,7 +318,7 @@ public class App {
         if(cliente == null){
             System.out.println("Nenhum cliente encontrando com esse nome, tente novamente!");
         } else if (cliente != null) {
-            clienteController.mostrarCliente(cliente);
+            System.out.printf(" Cliente: %s | Email: %s | CPF: %d | Data de Nascimento: %s |\n", cliente.getNome(), cliente.getEmail(), cliente.getCpf(), cliente.getDataNasc());
         }
     }
 }
