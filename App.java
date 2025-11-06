@@ -92,7 +92,13 @@ public class App {
 
 
         System.out.println("\n--- Produtos disponíveis ---");
-        produtoController.listarProdutos();
+        int quantiProdutos = 1;
+
+        for (Produto p : produtoController.verProduto()) {
+
+            System.out.printf("%d | Produto: %s | Valor: %.2f |\n", quantiProdutos, p.getNome(), p.getPrecoCusto());
+            quantiProdutos++;
+        }
 
         System.out.print("Digite o número do produto que você deseja: ");
         int produtoDesejado = Integer.parseInt(scanner.nextLine());
@@ -139,6 +145,7 @@ public class App {
 
         if(produtoAchado != null) {
 
+            System.out.printf("| Produto: %s | Valor: %.2f |\n", produtoAchado.getNome(), produtoAchado.getPrecoCusto());
             System.out.print("Deseja comprar este produto(S/N): ");
             String deseja = scanner.nextLine();
 
@@ -246,13 +253,16 @@ public class App {
 
         Produto produtoCriado = produtoController.criarProduto(nome, precoCus, precoLuc, quanti);
 
-        produtoController.procurarProduto(nome);
+        System.out.printf("| Produto: %s | Valor: %.2f |\n", produtoCriado.getNome(), produtoCriado.getPrecoCusto());
 
         System.out.printf("Produto %s adicionado com sucesso!", nome);
     }
 
     public void verProdutos(){
-        produtoController.verProdutos();
+        for (Produto p : produtoController.verProduto()) {
+
+            System.out.printf("| Produto: %s | Custo: %.2f | Valor: %.2f | Quantidade: %d |\n", p.getNome(), p.getPrecoCusto(), p.getPrecoVenda(), p.getQuantidade());
+        }
     }
 
     public void modificaProduto(Scanner scanner){

@@ -15,24 +15,8 @@ public class ProdutoController {
     /*lista os produtos para os clientes
     printa uma lista com os produtos
      */
-    public void listarProdutos() {
-        int quantiProdutos = 1;
-
-        for (Produto p : listaDeProdutos) {
-
-            System.out.printf("%d | Produto: %s | Valor: %.2f |\n", quantiProdutos, p.getNome(), p.getPrecoCusto());
-            quantiProdutos++;
-        }
-    }
-
-    public void verProdutos(){
-        int quantiProdutos = 1;
-
-        for (Produto p : listaDeProdutos) {
-
-            System.out.printf("| Produto: %s | Custo: %.2f | Valor: %.2f | Quantidade: %d |\n", p.getNome(), p.getPrecoCusto(), p.getPrecoVenda(), p.getQuantidade());
-            quantiProdutos++;
-        }
+    public List<Produto> verProduto(){
+        return listaDeProdutos;
     }
 
     public Produto escolherProduto(int index){
@@ -59,7 +43,6 @@ public class ProdutoController {
     public Produto procurarProduto(String produto){
         for (Produto p : listaDeProdutos) {
             if(produto.equalsIgnoreCase(p.getNome())) {
-                System.out.printf("| Produto: %s | Valor: %.2f |\n", p.getNome(), p.getPrecoCusto());
                 return p;
             }
 
